@@ -22,7 +22,7 @@ const Todos = () => {
     useEffect(() => {
         const savedTodos = localStorage.getItem('todos')
 
-        if (savedTodos && savedTodos.length > 0) {
+        if (savedTodos) {
             dispatch(setTodos(JSON.parse(savedTodos)))
         }
     }, [])
@@ -32,6 +32,8 @@ const Todos = () => {
     useEffect(() => {
         if (todos.length > 0) {
             localStorage.setItem('todos', JSON.stringify(todos))
+        }else{
+            localStorage.removeItem('todos')
         }
 
     }, [todos])
